@@ -1,0 +1,25 @@
+version: '3.9'
+services:
+    app:
+        build: .
+        volumes:
+            - ./:/app
+        environment:
+            PORT: 8080
+            DB_USER: root
+            DB_PASS: password
+        command: "sh -c 'sleep infinity'"
+        ports:
+            - 8080:8080
+
+    database:
+        image: 'ankane/pgvector'
+        volumes:
+            - ./db-data:/var/lib/postgresql/data/
+        environment:
+            POSTGRES_USER: root
+            POSTGRES_PASSWORD: password
+            POSTGRES_DB: line-ai-demo
+        ports:
+            - 5432:5432
+
