@@ -1,4 +1,3 @@
-import requests
 from fastapi import APIRouter
 from configs import get_session_with_headers
 router = APIRouter()
